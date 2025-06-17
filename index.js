@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const userRoutes = require('./routes/userRoutes.js');
@@ -8,6 +9,7 @@ require('dotenv').config();
 require('./db.js');
 const PORT = process.env.PORT;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/users',userRoutes);
 app.use('/tasks',taskRoutes);
